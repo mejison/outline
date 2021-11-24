@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve & nodemon server.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@google-cloud/firestore": "^4.15.1",
     "@googlemaps/js-api-loader": "^1.12.10",
     "core-js": "^3.6.5",
+    "firebase": "^9.5.0",
     "google-maps-api-loader": "^1.1.1",
     "node-sass": "^6.0.1",
     "sass-loader": "^10.2.0",
@@ -20,8 +22,12 @@
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
+    "body-parser": "^1.19.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15",
+    "uuid": "^8.3.2",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
