@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve & nodemon server.js",
+    "serve": "vue-cli-service serve & nodemon server-local.js",
     "build": "vue-cli-service build & netlify-lambda build express",
     "lint": "vue-cli-service lint"
   },
@@ -28,6 +28,7 @@
     "express": "^4.17.1",
     "netlify-lambda": "^2.0.15",
     "nodemon": "^2.0.15",
+    "serverless-http": "^2.7.0",
     "uuid": "^8.3.2",
     "vue-template-compiler": "^2.6.11"
   },
