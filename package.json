@@ -11,6 +11,7 @@
     "@google-cloud/firestore": "^4.15.1",
     "@googlemaps/js-api-loader": "^1.12.10",
     "core-js": "^3.6.5",
+    "encoding": "^0.1.13",
     "firebase": "^9.5.0",
     "google-maps-api-loader": "^1.1.1",
     "node-sass": "^6.0.1",
