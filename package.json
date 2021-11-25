@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve & nodemon server.js",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build & netlify-lambda build express",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -26,6 +26,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "express": "^4.17.1",
+    "netlify-lambda": "^2.0.15",
     "nodemon": "^2.0.15",
     "uuid": "^8.3.2",
     "vue-template-compiler": "^2.6.11"
