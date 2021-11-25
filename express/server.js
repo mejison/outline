@@ -35,7 +35,7 @@ io.on('connection', function(socket) {
 
 const db = new Firestore({
     projectId: 'outline-70ab6',
-    keyFilename: path.resolve('keyfile.json'),
+    keyFilename: path.resolve(__dirname + '/..', 'keyfile.json'),
 });
 
 app.post('/api/v1/add', async (req, res) => {
