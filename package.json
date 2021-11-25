@@ -10,12 +10,18 @@
   "dependencies": {
     "@google-cloud/firestore": "^4.15.1",
     "@googlemaps/js-api-loader": "^1.12.10",
+    "axios": "^0.24.0",
     "core-js": "^3.6.5",
+    "cors": "^2.8.5",
     "encoding": "^0.1.13",
     "firebase": "^9.5.0",
     "google-maps-api-loader": "^1.1.1",
+    "moment": "^2.29.1",
     "node-sass": "^6.0.1",
+    "numeral": "^2.0.6",
+    "requestify": "^0.2.5",
     "sass-loader": "^10.2.0",
+    "socket.io": "^4.4.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {

@@ -1,5 +1,4 @@
 'use strict';
 
-const app = require('./express/server');
-
-app.listen(3000, () => console.log('Local app listening on port 3000!'));
+const http = require('./express/server');
+http.listen(process.env.VUE_APP_BACKEND_PORT, () => console.log(`listening on *:${process.env.VUE_APP_BACKEND_PORT}!`));

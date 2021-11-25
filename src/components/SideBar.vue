@@ -8,15 +8,21 @@
         </div>
         <div class="visits">
           Gospel Visits
-          <span class="value">{{ counters[currentState].visits }}</span>
+          <span class="value">{{
+            numeral(counters[currentState].visit).format("0,000")
+          }}</span>
         </div>
         <div class="salvations">
           Indicated Decisions
-          <span class="value">{{ counters[currentState].salvations }}</span>
+          <span class="value">{{
+            numeral(counters[currentState].salvation).format("0,000")
+          }}</span>
         </div>
         <div class="discipleship">
           Discipleship Activity
-          <span class="value">{{ counters[currentState].discipleship }}</span>
+          <span class="value">{{
+            numeral(counters[currentState].discipleship).format("0,000")
+          }}</span>
         </div>
       </div>
     </div>
@@ -25,6 +31,7 @@
 
 <script>
 import Switcher from "./Switcher";
+import numeral from "numeral";
 
 export default {
   name: "SideBar",
@@ -37,6 +44,7 @@ export default {
 
   data() {
     return {
+      numeral: numeral,
       states: [
         {
           label: "TODAY",
