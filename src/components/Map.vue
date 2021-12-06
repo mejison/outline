@@ -364,7 +364,7 @@ export default {
         icon: image,
         map: this.map,
         optimized: false,
-        position: { lat: marker.latitude, lng: marker.longitude },
+        position: { lat: marker.latitude * 1, lng: marker.longitude * 1 },
         title: marker.type,
         visible: true,
       });

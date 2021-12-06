@@ -35,7 +35,7 @@ io.on('connection', function(socket) {
 
 const db = new Firestore({
     projectId: 'outline-70ab6',
-    keyFilename: path.resolve(__dirname + '/..', 'keyfile.json'),
+    keyFilename: path.resolve('keyfile.json'),
 });
 
 app.post('/api/v1/add', async (req, res) => {
@@ -57,8 +57,8 @@ app.post('/api/v1/add', async (req, res) => {
         pageViews: 0,
     }
     data = {...data, ...req.body}
-    
-    const finded = await db.collection('data').where('vistorID', '==', req.body.vistorID).get();
+
+    const finded = await db.collection('data').where('vistorID', '==', data.vistorID).get();
 
     if ( ! finded.empty) {
         let ids = {};
@@ -74,23 +74,26 @@ app.post('/api/v1/add', async (req, res) => {
 
     const { city, latitude, longitude, country_name, country_code  } = await getGeoDataByIp(data.ip);
 
-    socketConnection.emit("add", {
-        visitorId: data.vistorID,
-        latitude: latitude,
-        longitude:longitude,
-        countryCode: country_name,
-        country: country_code,
-        city: city,
-        website: data.url,
-        timestamp: `${(new Date() / 1000).toFixed(0)}`,
-        type: data.eventType,
-        gospel: {
-            newVisit: ['visit'].includes(data.eventType) ? true : false,
-            newSalvation: ['salvation'].includes(data.eventType) ? true : false,
-            newDiscipleship: ['discipleship'].includes(data.eventType) ? true : false,
-        },
-        updateCounters: await getCounters(),
-    });
+    if(socketConnection) {
+        socketConnection.emit("add", {
+            visitorId: data.vistorID,
+            latitude: latitude ? latitude : data.latitude,
+            longitude: longitude ? longitude : data.longitude,
+            countryCode: country_name,
+            country: country_code,
+            city: city,
+            website: data.url,
+            timestamp: `${(new Date() / 1000).toFixed(0)}`,
+            type: data.eventType,
+            gospel: {
+                newVisit: ['visit'].includes(data.eventType) ? true : false,
+                newSalvation: ['salvation'].includes(data.eventType) ? true : false,
+                newDiscipleship: ['discipleship'].includes(data.eventType) ? true : false,
+            },
+            updateCounters: await getCounters(),
+        });
+    }
+
     res.json({ message: 'Successfuly created' });
 });
 
