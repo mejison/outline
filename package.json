@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve & nodemon server-local.js",
+    "serve": "vue-cli-service serve & nodemon app.js",
     "build": "vue-cli-service build & netlify-lambda build express",
     "lint": "vue-cli-service lint"
   },

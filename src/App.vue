@@ -54,18 +54,20 @@ export default {
       });
     },
     initSocket() {
-      this.socket = window.io(
-        `${location.protocol}//${location.hostname}:${process.env.VUE_APP_BACKEND_PORT}`
-      );
+      if (window.io) {
+        this.socket = window.io(
+          `${location.protocol}//${location.hostname}:${process.env.VUE_APP_BACKEND_PORT}`
+        );
 
-      this.socket.on("add", (data) => {
-        if (data) {
-          const { updateCounters } = data;
-          this.counters = { ...updateCounters };
-          console.log(data);
-          this.markers = [{ ...data }];
-        }
-      });
+        this.socket.on("add", (data) => {
+          if (data) {
+            const { updateCounters } = data;
+            this.counters = { ...updateCounters };
+            console.log(data);
+            this.markers = [{ ...data }];
+          }
+        });
+      }
     },
   },
 };
