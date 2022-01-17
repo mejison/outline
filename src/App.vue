@@ -19,7 +19,7 @@ export default {
 
   data() {
     return {
-      apiUrl: `${location.protocol}//${location.hostname}:${process.env.VUE_APP_BACKEND_PORT}`,
+      apiUrl: "",
       counters: {
         today: {
           visit: 0,
@@ -43,11 +43,19 @@ export default {
   },
 
   mounted() {
+    this.initApiUrl();
     this.initSocket();
     this.getData();
   },
 
   methods: {
+    initApiUrl() {
+      if (["localhost"].includes(location.hostname)) {
+        this.apiUrl = `${location.protocol}//${location.hostname}:${process.env.VUE_APP_BACKEND_PORT}`;
+        return;
+      }
+      this.apiUrl = `${location.protocol}//${location.hostname}`;
+    },
     getData() {
       axios.get(`${this.apiUrl}/api/v1/get`).then(({ data: { data } }) => {
         this.counters = { ...data };
