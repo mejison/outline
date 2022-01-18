@@ -51,7 +51,7 @@ export default {
   methods: {
     initApiUrl() {
       if (["localhost"].includes(location.hostname)) {
-        this.apiUrl = `${location.protocol}//${location.hostname}:${process.env.VUE_APP_BACKEND_PORT}`;
+        this.apiUrl = `${location.protocol}//${location.hostname}`;
         return;
       }
       this.apiUrl = `${location.protocol}//${location.hostname}`;
@@ -63,9 +63,7 @@ export default {
     },
     initSocket() {
       if (window.io) {
-        this.socket = window.io(
-          `${location.protocol}//${location.hostname}:${process.env.VUE_APP_BACKEND_PORT}`
-        );
+        this.socket = window.io(`${location.protocol}//${location.hostname}`);
 
         this.socket.on("add", (data) => {
           if (data) {
