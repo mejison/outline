@@ -34,7 +34,7 @@ io.on('connection', function(socket) {
  });
 
 const db = new Firestore({
-    projectId: 'outline-70ab6',
+    projectId: 'salvation-dashboard',
     keyFilename: path.resolve('keyfile.json'),
 });
 
