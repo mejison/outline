@@ -129,14 +129,14 @@ async function getCounters() {
             discipleship: 0,
         },
         yesterday: {
-            visit: 0,
-            salvation: 0,
-            discipleship: 0,
+            visit: 7712304,
+            salvation: 7712304,
+            discipleship: 7712304,
         },
         all: {
-            visit: 0,
-            salvation: 0,
-            discipleship: 0,
+            visit: 817312,
+            salvation: 817312,
+            discipleship: 817312,
         },
     };
 
