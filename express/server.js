@@ -57,6 +57,15 @@ app.post('/api/v1/add', async (req, res) => {
         pageViews: 0,
     }
     data = {...data, ...req.body}
+    
+    const existSame = await db.collection('data')
+                            .where('latitude', '==', data.latitude)
+                            .where('longitude', '==', data.longitude)
+                            .where('userAgent', '==', data.userAgent)
+                            .get();
+    if ( ! existSame.empty) {
+        data.returning = true;
+    }
 
     const finded = await db.collection('data').where('vistorID', '==', data.vistorID).get();
 
