@@ -143,12 +143,12 @@ async function getCounters() {
     const todayStartDay = moment().hours(0).minutes(0).seconds(0).milliseconds(0);
     const todayEndDay = moment().endOf("day");
 
-    const yesterdayStartDay = moment().subtract(1, 'days').hours(0).minutes(0).seconds(0).milliseconds(0);
-    const yesterdayEndDay = moment().subtract(1, 'days').endOf("day");
+    const yearToDateStartDay = moment().startOf('year').hours(0).minutes(0).seconds(0).milliseconds(0);
+    const yearToDateEndDay = moment().endOf("day");
 
     data.forEach((item) => {
         const isToday = moment.unix(item.lastViewEnd._seconds).isBetween(todayStartDay, todayEndDay);
-        const isYesterday = moment.unix(item.lastViewEnd._seconds).isBetween(yesterdayStartDay, yesterdayEndDay);
+        const isYearToDate = moment.unix(item.lastViewEnd._seconds).isBetween(yearToDateStartDay, yearToDateEndDay);
         if (isToday) {
             counters = {
                 ...counters,
@@ -159,7 +159,7 @@ async function getCounters() {
             }
         }
 
-        if (isYesterday) {
+        if (isYearToDate) {
             counters = {
                 ...counters,
                 yesterday: {
