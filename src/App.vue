@@ -51,7 +51,7 @@ export default {
   methods: {
     initApiUrl() {
       if (["localhost"].includes(location.hostname)) {
-        this.apiUrl = `${location.protocol}//${location.hostname}`;
+        this.apiUrl = `${location.protocol}//${location.hostname}:3000`;
         return;
       }
       this.apiUrl = `${location.protocol}//${location.hostname}`;

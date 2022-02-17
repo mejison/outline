@@ -18,12 +18,12 @@ export default {
       map: null,
       apiKey: "AIzaSyB0MA1eideexmAUX4ZivDjonU-ba4_iAbk",
       mapConfig: {
-        center: {
-          lat: 0,
-          lng: 0,
-        },
-        zoom: 2,
+        zoom: Math.ceil(Math.log2(window.outerWidth)) - 9,
         disableDefaultUI: true,
+        draggable: false,
+        zoomControl: false,
+        scrollwheel: false,
+        disableDoubleClickZoom: true,
         styles: [
           {
             featureType: "all",
@@ -317,7 +317,6 @@ export default {
 
   async mounted() {
     this.initializeMap();
-
     setTimeout(() => {}, 2000);
   },
 
@@ -344,6 +343,7 @@ export default {
           this.google = google;
           this.map = new google.maps.Map(this.$refs.googleMap, {
             ...this.mapConfig,
+            center: new google.maps.LatLng(0, 0),
           });
         })
         .catch((e) => {
@@ -382,6 +382,8 @@ export default {
 .google-map {
   height: 100%;
   width: 100%;
+  // width: 500px;
+  // height: 500px;
 }
 
 @-moz-keyframes pulsate {
